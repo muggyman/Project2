@@ -5,7 +5,6 @@ using UnityEngine;
 public class Frog : MonoBehaviour
 {
     Controls controls;
-    Tongue tongue;
 
     public CharacterController charController;
 
@@ -28,7 +27,6 @@ public class Frog : MonoBehaviour
     void Start()
     {
         controls = new Controls();
-        tongue = new Tongue();
 
         m_Rigidbody = GetComponent<Rigidbody>();
     }
@@ -82,7 +80,6 @@ public class Frog : MonoBehaviour
     void OnTongue()
     {
         Debug.Log("OnToungeCalled");
-        tongue.extendTongue();
     }
 
 }
