@@ -81,7 +81,8 @@ public class Frog : MonoBehaviour
 
     void OnTongue()
     {
-        //tongue.extend = true;
+        Debug.Log("OnToungeCalled");
+        tongue.extendTongue();
     }
 
 }
