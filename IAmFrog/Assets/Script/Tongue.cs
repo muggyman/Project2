@@ -5,57 +5,25 @@ using UnityEngine;
 public class Tongue : MonoBehaviour
 {
 
-    bool extend;
-
-    void Start()
+    void Update()
     {
-        extend = false;
+
     }
 
-    private void Update()
+    IEnumerator Start()
     {
-        if(extend == true)
-        {
-            Debug.Log("in update if");
-            StartCoroutine("Out", 2.0F);
-            StopCoroutine("Out");
-
-            StartCoroutine("In", 2.0F);
-            StopCoroutine("In");
-        }
+        StartCoroutine("DoSomething", 2.0F);
+        yield return new WaitForSeconds(1);
+        StopCoroutine("DoSomething");
     }
 
-    public void extendTongue()
-    {
-        extend = true;
-        Debug.Log("extend = true");
-    }
-
-    //IEnumerator Start()
-    //{
-    //StartCoroutine("DoSomething", 2.0F);
-    //yield return new WaitForSeconds(1);
-    //StopCoroutine("DoSomething");
-    //}
-
-    IEnumerator Out()
+    IEnumerator DoSomething(float someParameter)
     {
         while (true)
         {
-            yield return new WaitForSeconds(1);
-            transform.localScale += new Vector3(0, 0, 0.2f);
+            transform.localScale += new Vector3(0, 0, 0.15f);
             yield return null;
         }
     }
 
-    IEnumerator In()
-    {
-        while (true)
-        {
-            extend = false;
-            yield return new WaitForSeconds(1);
-            transform.localScale += new Vector3(0, 0, 0);
-            yield return null;
-        }
-    }
 }
