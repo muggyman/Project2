@@ -49,6 +49,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Tongue"",
+                    ""type"": ""Button"",
+                    ""id"": ""26ac52ea-ee12-4abd-b621-d3c2c9b6b274"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -95,6 +103,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""70c46146-2882-4d55-80b8-f4e306c44092"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Tongue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -107,6 +126,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_PlayerControls_Left = m_PlayerControls.FindAction("Left", throwIfNotFound: true);
         m_PlayerControls_Right = m_PlayerControls.FindAction("Right", throwIfNotFound: true);
         m_PlayerControls_Jump = m_PlayerControls.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerControls_Tongue = m_PlayerControls.FindAction("Tongue", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -160,6 +180,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerControls_Left;
     private readonly InputAction m_PlayerControls_Right;
     private readonly InputAction m_PlayerControls_Jump;
+    private readonly InputAction m_PlayerControls_Tongue;
     public struct PlayerControlsActions
     {
         private @Controls m_Wrapper;
@@ -168,6 +189,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Left => m_Wrapper.m_PlayerControls_Left;
         public InputAction @Right => m_Wrapper.m_PlayerControls_Right;
         public InputAction @Jump => m_Wrapper.m_PlayerControls_Jump;
+        public InputAction @Tongue => m_Wrapper.m_PlayerControls_Tongue;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -189,6 +211,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnJump;
+                @Tongue.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTongue;
+                @Tongue.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTongue;
+                @Tongue.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTongue;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -205,6 +230,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Tongue.started += instance.OnTongue;
+                @Tongue.performed += instance.OnTongue;
+                @Tongue.canceled += instance.OnTongue;
             }
         }
     }
@@ -215,5 +243,6 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnLeft(InputAction.CallbackContext context);
         void OnRight(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnTongue(InputAction.CallbackContext context);
     }
 }
