@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Frog
   - Tongue
+  - Butterfly
+  - Fly
   layers:
   - Default
   - TransparentFX

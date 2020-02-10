@@ -10,12 +10,12 @@ public class Tongue : MonoBehaviour
 
     }
 
-    IEnumerator Start()
-    {
-        StartCoroutine("DoSomething", 2.0F);
-        yield return new WaitForSeconds(1);
-        StopCoroutine("DoSomething");
-    }
+    //IEnumerator Start()
+    //{
+        //StartCoroutine("DoSomething", 2.0F);
+        //yield return new WaitForSeconds(1);
+        //StopCoroutine("DoSomething");
+   // }
 
     IEnumerator DoSomething(float someParameter)
     {

@@ -3,23 +3,56 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject endScreen;
+    public GameObject winScreen; //win
+    public GameObject loseScreen1; //eat butterfly
+    public GameObject loseScreen2; //empty energy bar
     public GameObject UI;
+
+    private int flyAmt;
+    private int bFlyAmt;
 
     void Start()
     {
-        hideEndScreen();
+        HideWinScreen();
+        HideloseScreen1();
+        HideloseScreen2();
 
         UI.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    public void EndGame()
+    public void ShowWinScreen()
     {
-        endScreen.SetActive(true);
+        winScreen.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
     }
 
-    public void hideEndScreen()
+    public void ShowLoseScreen1()
     {
-        endScreen.SetActive(false);
+        loseScreen1.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
     }
+
+    public void ShowLoseScreen2()
+    {
+        loseScreen2.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void HideWinScreen()
+    {
+        winScreen.SetActive(false);
+    }
+
+    public void HideloseScreen1()
+    {
+        loseScreen1.SetActive(false);
+    }
+
+    public void HideloseScreen2()
+    {
+        loseScreen2.SetActive(false);
+    }
+
 }

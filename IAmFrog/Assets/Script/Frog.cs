@@ -23,12 +23,16 @@ public class Frog : MonoBehaviour
 
     Vector2 sideMove;
 
+    public GameObject tongue;
+
     // Start is called before the first frame update
     void Start()
     {
         controls = new Controls();
 
         m_Rigidbody = GetComponent<Rigidbody>();
+
+        tongue.SetActive(false);
     }
 
     // Update is called once per frame
@@ -44,29 +48,11 @@ public class Frog : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         charController.Move(velocity * Time.deltaTime);
 
-        //Vector2 sm = new Vector2(sideMove.x, 0) * Time.deltaTime;
-        //transform.Translate(sm, Space.World);
-
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * x + transform.forward * z;
         charController.Move(move * moveSpeed * Time.deltaTime);
-    }
-
-    void OnForward()
-    {
-        
-    }
-
-    void OnLeft()
-    {
-        
-    }
-
-    void OnRight()
-    {
-        
     }
 
     void OnJump()
@@ -79,7 +65,14 @@ public class Frog : MonoBehaviour
 
     void OnTongue()
     {
-        Debug.Log("OnToungeCalled");
+        tongue.SetActive(true);
+        StartCoroutine(TongueDeactivate());
+    }
+
+    IEnumerator TongueDeactivate()
+    {
+        yield return new WaitForSeconds(0.2f);
+        tongue.SetActive(false);
     }
 
 }
