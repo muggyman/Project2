@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class InstructionsScreen : MonoBehaviour
 {
+    public GameObject MainUI;
+
     public void MainMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+        MainUI.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 }

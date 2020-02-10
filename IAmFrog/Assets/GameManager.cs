@@ -19,25 +19,29 @@ public class GameManager : MonoBehaviour
 
         UI.SetActive(true);
 
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void ShowWinScreen()
     {
         winScreen.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void ShowLoseScreen1()
     {
         loseScreen1.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void ShowLoseScreen2()
     {
         loseScreen2.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void HideWinScreen()

@@ -25,12 +25,18 @@ public class Frog : MonoBehaviour
 
     public GameObject tongue;
 
+    public AudioClip jumpSound;
+    public AudioClip tongueSound;
+    private AudioSource m_AudioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         controls = new Controls();
 
         m_Rigidbody = GetComponent<Rigidbody>();
+
+        m_AudioSource = GetComponent<AudioSource>();
 
         tongue.SetActive(false);
     }
@@ -60,6 +66,7 @@ public class Frog : MonoBehaviour
         if(isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            m_AudioSource.PlayOneShot(jumpSound);
         }
     }
 
@@ -67,6 +74,7 @@ public class Frog : MonoBehaviour
     {
         tongue.SetActive(true);
         StartCoroutine(TongueDeactivate());
+        m_AudioSource.PlayOneShot(tongueSound);
     }
 
     IEnumerator TongueDeactivate()

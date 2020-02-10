@@ -13,6 +13,6 @@ public class LoseScreen : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3);
+        SceneManager.LoadScene("Main Menu");
     }
 }
